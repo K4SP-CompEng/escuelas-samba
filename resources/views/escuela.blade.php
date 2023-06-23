@@ -2,9 +2,16 @@
 
 @section('title', 'Escuela')
 
+@php
+    $escuelas = DB::select('select distinct nombre from JAM_escuela order by nombre');
+@endphp
+
 @section('content')
-    <p>Escuela: GRES Lorem Ipsum</p>
-    <p>Breve historia: Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda nisi aliquid ullam impedit eligendi at voluptas velit, reiciendis rerum, esse quos odio dicta repellat. Dolores nesciunt similique temporibus consectetur a.</p>
-    <p>Colores: Amarillo, Azul, Rojo</p>
-    <p></p>
+    <h1>Encuentra escuelas:</h1>
+    <select name="nombre" id="nombre">
+        <option value="" selected>Escoger escuela...</option>
+        @foreach ($escuelas as $escuela)
+            <option value="{{ $escuela->nombre }}">{{ $escuela->nombre }}</option>
+        @endforeach
+    </select>
 @endsection

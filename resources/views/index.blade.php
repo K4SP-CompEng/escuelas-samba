@@ -10,5 +10,4 @@
                 align-items: center;">
         <h2>Observa los records de las principales escuelas de samba de Brasil</h2>
     </div>
-
 @endsection
