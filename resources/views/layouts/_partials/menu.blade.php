@@ -15,9 +15,7 @@
             <li style="margin-right: 8px"><a href="{{ route('index') }}">Inicio</a></li>
             <li style="margin-right: 8px"><a href="{{ route('escuela') }}">Escuelas</a></li>
             <li style="margin-right: 8px"><a href="">Colaboradores</a></li>
-            <li style="margin-right: 8px"><a href="">Actividades</a></li>
-            <li style="margin-right: 8px"><a href="">Sambas</a></li>
-            <li style="margin-right: 8px"><a href="">Premios</a></li>
+            <li style="margin-right: 8px"><a href="">Patrocinadores</a></li>
         </ul>
     </nav>
 </header>
