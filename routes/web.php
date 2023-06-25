@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ColaboradorController;
+use App\Models\Colaborador;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'index')->name('index');
 Route::view('/escuelas', 'escuela')->name('escuela');
+
+Route::get('/colaboradores', [ColaboradorController::class, 'index'])->name('buscar_colaborador');
+Route::get('/colaboradores/crear', [ColaboradorController::class, 'create'])->name('crear_colaborador');
+Route::post('/colaboradores/introducido', [ColaboradorController::class, 'store'])->name('colaborador_creado');
+Route::get('/colaboradores.resultados', [ColaboradorController::class, 'show'])->name('mostrar_colaborador');
+
