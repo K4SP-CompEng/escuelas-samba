@@ -12,7 +12,7 @@
         <img src="{{ asset('assets/img/wallpaperflare.com_wallpaper.jpg') }}"
              width="100%"
              height="93%"
-             style="position:absolute;
+             style="position:fixed;
                     left: 0px;
                     bottom: 0px;
                     z-index: -2;

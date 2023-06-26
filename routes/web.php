@@ -21,5 +21,7 @@ Route::view('/escuelas', 'escuela')->name('escuela');
 Route::get('/colaboradores', [ColaboradorController::class, 'index'])->name('buscar_colaborador');
 Route::get('/colaboradores/crear', [ColaboradorController::class, 'create'])->name('crear_colaborador');
 Route::post('/colaboradores/introducido', [ColaboradorController::class, 'store'])->name('colaborador_creado');
-Route::get('/colaboradores.resultados', [ColaboradorController::class, 'show'])->name('mostrar_colaborador');
+Route::get('/colaboradores/resultados', [ColaboradorController::class, 'show'])->name('mostrar_colaborador');
+Route::get('/colaboradores/editar/{colab}', [ColaboradorController::class, 'edit'])->name('editar_colaborador');
+Route::put('/colaboradores/actualizar/{colab}', [ColaboradorController::class, 'update'])->name('actualizar_colaborador');
 

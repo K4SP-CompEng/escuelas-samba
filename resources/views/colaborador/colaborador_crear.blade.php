@@ -33,7 +33,7 @@
             <input type="text" name="segundo_apellido_colab" id="segundo_apellido_colab">
         </label>
         <label for="apodo_colab">Apodo:
-            <input type="text" name="apodo_colab" id="apodo_colab" required>
+            <input type="text" name="apodo_colab" id="apodo_colab">
         </label>
         <label for="nacimiento_colab">Fecha de nacimiento:
             <input type="date" name="nacimiento_colab" id="nacimiento_colab" required>
