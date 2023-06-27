@@ -3,12 +3,9 @@
 @section('title', 'Colabradores')
 
 @php
-    $colaboradores = DB::select("select coalesce(nullif(col.primer_apellido, 'NULL'), '') || case when col.segundo_apellido = 'NULL' then '' else ' ' end || coalesce(nullif(col.segundo_apellido, 'NULL'), '') || ', ' || coalesce(nullif(col.primer_nombre, 'NULL'), '') || case when col.segundo_nombre = 'NULL' then '' else ' ' end || coalesce(nullif(col.segundo_nombre, 'NULL'), '') as nombre_completo
-                                 from JAM_colaborador col
-                                 order by primer_apellido");
-    $apodos = DB::select("select distinct apodo from JAM_colaborador where apodo <> 'NULL' order by apodo");
+
+
     $escuelas = DB::select('select distinct nombre from JAM_escuela order by nombre');
-    $nacionalidad = DB::select('select distinct nacionalidad from JAM_colaborador order by nacionalidad');
     $lugares = DB::select("select c.nombre || ', ' || e.nombre as direccion, c.nombre as ciudad from JAM_lugar c inner join JAM_lugar e on c.cod_ubicacion = e.id_lugar where c.tipo = 'Ciudad' and e.tipo = 'Estado' order by direccion");
 @endphp
 

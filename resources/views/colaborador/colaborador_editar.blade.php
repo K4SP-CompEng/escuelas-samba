@@ -13,9 +13,13 @@
 @section('content')
     <a href="{{ route('buscar_colaborador') }}">Buscar colaboradores</a>
     <a href="">Eliminar colaboradores</a>
-    <form action="" method="POST" style="display:flex; flex-direction: column;">
+    <form action="{{ route('colaborador_actualizado', ['id' => $colaborador->id_colaborador]) }}" method="POST" style="display:flex; flex-direction: column;">
+        @method('put')
         @csrf
         <h1>Encuentra colaboradores de las escuelas:</h1>
+        <label for="id_colab">Identificador:
+            <input type="number" name="id_colab" id="id_colab" value="{{ $colaborador->id_colaborador }}" readonly>
+        </label>
         <label for="docidentidad_colab">Número de cédula:
             <input type="number" name="docidentidad_colab" id="docidentidad_colab" value="{{ $colaborador->docidentidad }}">
         </label>

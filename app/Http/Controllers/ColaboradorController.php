@@ -69,9 +69,10 @@ class ColaboradorController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Colaborador $colab)
+    public function update(Request $request, string $id)
     {
-        $colab->id = DB::select("select max(id_escuela) from JAM_escuela")[0]->id_escuela + 1;
+        $colab = new Colaborador();
+        $colab->id = $request->id_colab;
         $colab->docidentidad = $request->docidentidad_colab;
         $colab->primer_nombre = $request->primer_nombre_colab;
         $colab->segundo_nombre = $request->segundo_nombre_colab;
@@ -81,11 +82,23 @@ class ColaboradorController extends Controller
         $colab->fecha_nacimiento = $request->nacimiento_colab;
         $colab->genero = $request->genero_colab;
         $colab->nacionalidad = $request->nacion_colab;
-        $colab->direccion = $request->direccion_colab;
-        $colab->escuela = DB::select("select id_escuela from JAM_escuela where nombre = ".$request->escuela_colab.";")[0]->id_escuela;
-        $colab->save();
+        $colab->direccion = DB::select("select id_lugar from JAM_lugar where nombre = '".$request->direccion_colab."'")[0]->id_lugar;
+        $colab->escuela = DB::select("select id_escuela from JAM_escuela where nombre = '".$request->escuela_colab."'")[0]->id_escuela;
 
-        return redirect()->route('index');
+        DB::select("update JAM_colaborador set docidentidad = ".$colab->docidentidad.",
+                                               primer_nombre = '".$colab->primer_nombre."',
+                                               segundo_nombre = '".$colab->segundo_nombre."',
+                                               primer_apellido = '".$colab->primer_apellido."',
+                                               segundo_apellido = '".$colab->segundo_apellido."',
+                                               apodo = '".$colab->apodo."',
+                                               fecha_nacimiento = TO_DATE('".$colab->fecha_nacimiento."', 'YYYY-MM-DD'),
+                                               genero = '".$colab->genero."',
+                                               nacionalidad = '".$colab->nacionalidad."',
+                                               direccion_colab = ".$colab->direccion.",
+                                               escuela_colab = ".$colab->escuela."
+                                           where id_colaborador = ".$colab->id);
+
+        return redirect()->route('buscar_colaborador');
     }
 
     /**
@@ -93,6 +106,7 @@ class ColaboradorController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        DB::select("delete from JAM_colaborador where id_colaborador = ".$id);
+        return redirect()->route('buscar_colaborador');
     }
 }

@@ -24,4 +24,5 @@ Route::post('/colaboradores/introducido', [ColaboradorController::class, 'store'
 Route::get('/colaboradores/ver/{id}', [ColaboradorController::class, 'show'])->name('mostrar_colaborador');
 Route::get('/colaboradores/editar/{id}', [ColaboradorController::class, 'edit'])->name('editar_colaborador');
 Route::put('/colaboradores/actualizar/{id}', [ColaboradorController::class, 'update'])->name('colaborador_actualizado');
+Route::delete('/note/destroy/{id}', [ColaboradorController::class, 'destroy'])->name('colaborador_eliminado');
 

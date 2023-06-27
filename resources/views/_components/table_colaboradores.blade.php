@@ -20,7 +20,13 @@
             <td>{{ $row->escuela }}</td>
             <td><a href="{{ route('mostrar_colaborador', ['id' => $row->id_colaborador]) }}">Ver</a></td>
             <td><a href="{{ route('editar_colaborador', ['id' => $row->id_colaborador]) }}">Editar</a></td>
-            <td><a href="">Eliminar</a></td>
+            <td>
+                <form method="POST" action="{{ route('colaborador_eliminado', ['id' => $row->id_colaborador]) }}">
+                    @csrf
+                    @method('delete')
+                    <input type="submit" value="Eliminar">
+                </form>
+            </td>
         </tr>
     @endforeach
 </table>
