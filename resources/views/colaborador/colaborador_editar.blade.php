@@ -7,12 +7,11 @@
     $apodos = DB::select("select distinct apodo from JAM_colaborador where apodo <> 'NULL' order by apodo");
     $escuelas = DB::select('select distinct nombre from JAM_escuela order by nombre');
     $nacionalidad = DB::select('select distinct nacionalidad from JAM_colaborador order by nacionalidad');
-    $lugares = DB::select("select c.nombre || ', ' || e.nombre as direccion, c.nombre as ciudad from JAM_lugar c inner join JAM_lugar e on c.cod_ubicacion = e.id_lugar where c.tipo = 'Ciudad' and e.tipo = 'Estado' order by direccion");
+    $lugares = DB::select("select c.nombre || ', ' || e.nombre as direccion, c.nombre as ciudad from JAM_lugar c inner join JAM_lugar e on c.cod_ubicacion = e.id_lugar where c.tipo = 'ciudad' and e.tipo = 'estado' order by direccion");
 @endphp
 
 @section('content')
     <a href="{{ route('buscar_colaborador') }}">Buscar colaboradores</a>
-    <a href="">Eliminar colaboradores</a>
     <form action="{{ route('colaborador_actualizado', ['id' => $colaborador->id_colaborador]) }}" method="POST" style="display:flex; flex-direction: column;">
         @method('put')
         @csrf
@@ -42,8 +41,8 @@
             <input type="date" name="nacimiento_colab" id="nacimiento_colab" value="{{ $colaborador->fecha_nacimiento }}" required>
         </label>
         <label for="genero_colab">Género:
-            <input type="radio" name="genero_colab" id="genero_colab" value="M">Masculino
-            <input type="radio" name="genero_colab" id="genero_colab" value="F">Femenino
+            <input type="radio" name="genero_colab" id="genero_colab" value="m">Masculino
+            <input type="radio" name="genero_colab" id="genero_colab" value="f">Femenino
         </label>
         <label for="nacion_colab">Nacionalidad:
             <input type="text" name="nacion_colab" id="nacion_colab" value="{{ $colaborador->nacionalidad }}" required>

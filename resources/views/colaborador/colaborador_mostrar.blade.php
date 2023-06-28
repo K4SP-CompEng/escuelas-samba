@@ -4,15 +4,12 @@
 
 @php
     $colaborador = DB::select("select * from JAM_colaborador where id_colaborador = ".$id)[0];
-    $apodos = DB::select("select distinct apodo from JAM_colaborador where apodo <> 'NULL' order by apodo");
     $escuela = DB::select('select nombre from JAM_escuela where id_escuela = '.$colaborador->escuela_colab)[0];
-    $nacionalidad = DB::select('select distinct nacionalidad from JAM_colaborador order by nacionalidad');
     $lugar = DB::select("select nombre as direccion from JAM_lugar where id_lugar = ".$colaborador->direccion_colab)[0];
 @endphp
 
 @section('content')
     <a href="{{ route('buscar_colaborador') }}">Buscar colaboradores</a>
-    <a href="">Eliminar colaboradores</a>
     <form style="display:flex; flex-direction: column;">
         @csrf
         <h1>Encuentra colaboradores de las escuelas:</h1>
