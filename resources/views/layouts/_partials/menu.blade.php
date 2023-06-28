@@ -13,7 +13,7 @@
         <ul style="display: flex;
                    list-style-type: none;">
             <li style="margin-right: 8px"><a href="{{ route('index') }}">Inicio</a></li>
-            <li style="margin-right: 8px"><a href="{{ route('escuela') }}">Escuelas</a></li>
+            <li style="margin-right: 8px"><a href="{{ route('buscar_escuela') }}">Escuelas</a></li>
             <li style="margin-right: 8px"><a href="{{ route('buscar_colaborador') }}">Colaboradores</a></li>
             <li style="margin-right: 8px"><a href="">Patrocinadores</a></li>
         </ul>

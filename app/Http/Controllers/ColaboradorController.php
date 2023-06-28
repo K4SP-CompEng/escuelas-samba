@@ -54,7 +54,6 @@ class ColaboradorController extends Controller
      */
     public function show(string $id)
     {
-
         return view('colaborador.colaborador_mostrar', compact('id'));
     }
 
